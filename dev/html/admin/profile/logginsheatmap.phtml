@@ -1,0 +1,13 @@
+<ips:template parameters="$data" />
+<style>
+    #cal-heatmap{
+        overflow: auto;
+    }
+</style>
+<div class="ipsPad ipsType_light ipsSpacer_bottom">
+    <div class="ipsBox ipsPadding:half" data-ipsHeatmap data-ipsHeatmap-months="6"  data-ipsHeatmap-container="#cal-heatmap" data-ipsHeatmap-domain='month' data-ipsHeatmap-data='{expression="json_encode( $data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS )"}'>
+        <h2 class="ipsBox_titleBar">{lang="df_daily_logins"}</h2>
+        <div id="cal-heatmap"></div>
+    </div>
+
+</div>

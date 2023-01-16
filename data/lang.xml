@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language>
+ <app key="loginheatmap" version="10013">
+  <word key="__app_loginheatmap" js="0">Member Loggins Heatmap</word>
+  <word key="memberACPProfileTitle_loginheatmap_Loggins" js="0">Logins</word>
+  <word key="df_daily_logins" js="0">Daily Logins in last 6 months</word>
+ </app>
+</language>

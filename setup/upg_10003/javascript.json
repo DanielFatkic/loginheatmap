@@ -1,0 +1,16 @@
+{
+    "files": {
+        "added": [
+            "loginheatmap\/admin\/ui\/ips.ui.heatmap.js"
+        ],
+        "edited": [],
+        "removed": [
+            "loginheatmap\/framework\/ui\/ips.ui.heatmap.js"
+        ]
+    },
+    "orders": {
+        "added": [],
+        "edited": [],
+        "removed": []
+    }
+}

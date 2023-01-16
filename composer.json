@@ -1,0 +1,5 @@
+{
+  "require": {
+    "spatie/x-ray": "^1.1"
+  }
+}

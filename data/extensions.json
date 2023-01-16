@@ -1,0 +1,10 @@
+{
+    "core": {
+        "MemberACPProfileBlocks": {
+            "Loggins": "IPS\\loginheatmap\\extensions\\core\\MemberACPProfileBlocks\\Loggins"
+        },
+        "MemberACPProfileTabs": {
+            "Loggins": "IPS\\loginheatmap\\extensions\\core\\MemberACPProfileTabs\\Loggins"
+        }
+    }
+}

@@ -1,0 +1,80 @@
+;(function ($, _, undefined) {
+    "use strict";
+
+    ips.createModule('ips.ui.heatmap', function () {
+        var defaults = {
+            cellSize: 19,
+            considerMissingDataAsZero: true,
+            displayLegend: false,
+            domain: false,
+            label: {
+                position: "top"
+            },
+            monthsToshow: 6,
+            legendColors: {
+                max: "#000",
+                min: "#eeeeee",
+                empty: "white"
+            },
+            start: false,
+            subDomain: `x_day`,
+            subDomainTextFormat: "%d",
+            tooltip: false
+        };
+        var respond = function (elem, options, e) {
+            options = _.defaults(options, defaults);
+            var heatmap = $( elem ).data('_heatmap');
+            if( !heatmap ){
+                $( elem ).data('_heatmap', heatmapObj(elem, _.defaults( options, defaults ) ) );
+            }
+        };
+
+
+            ips.ui.registerWidget('heatmap', ips.ui.heatmap, ['months', 'container', 'domain', 'data']);
+
+        return {
+            respond: respond,
+        };
+    });
+
+    var heatmapObj = function (elem, options) {
+        if( elem.attr('data-initialized') ){
+            return;
+        }
+        ips.loader.get( [ 'https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js' ] )
+            .then(
+                () => ips.loader.get([
+                    'https://cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js',
+                ])
+            )
+            .then( () => {
+
+                var startdata = new Date(
+                    new Date().getFullYear(),
+                    new Date().getMonth() - options.monthsToshow + 1,
+                    new Date().getDate()
+                );
+
+                options.data = $.parseJSON(options.data);
+                options.domainGutter = options.monthsToshow + 2;
+                options.itemSelector = options.container;
+                options.range = options.monthsToshow;
+                options.start = startdata;
+                options.lastYear = new Date(
+                    new Date().getFullYear(),
+                    new Date().getMonth() - options.monthsToshow + 1,
+                    new Date().getDate()
+                );
+                options.subDomainTitleFormat = {
+                    empty: "&nbsp;",
+                        filled: ""
+                };
+
+                var loginsCalMap = new CalHeatMap();
+                loginsCalMap.init(
+                    options
+                );
+                elem.attr( 'data-initialized', true );
+            });
+    };
+}(jQuery, _));
