@@ -33,3 +33,8 @@ jobs:
 
       - name: Check for ray calls
         run: ./vendor/bin/x-ray . --compact
+
+      - name: PHP Linter
+        uses: overtrue/phplint@8.1
+        with:
+          path: .
